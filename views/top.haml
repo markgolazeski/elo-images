@@ -1,0 +1,28 @@
+!!!
+%html
+  = haml :imports
+  %head
+    %title Top 5
+  %body
+    .top_info
+      %h3.links
+        %a{:href => '/vote'}
+          Vote More!
+      %p
+        %label Total Photos:
+        %span= "#{@num_photos}"
+      %p
+        %label Total Votes:
+        %span= "#{@num_votes}"
+    .list_div
+      %ol.top_list
+        -@top_photos.each do |photo|
+          %li
+            .photo
+              %img{:src => "#{photo.src}", :height => "#{photo.height}", :width => "#{photo.width}"}
+          .filler
+            %br
+            %br
+            %hr
+            %br
+            %br

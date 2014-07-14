@@ -1,0 +1,47 @@
+{
+  "data" : [
+  {
+    "id" : 1,
+    "src" : "images/1.png",
+    "height" : 420,
+    "width" : 520,
+    "matches" : 0,
+    "votes" : 0,
+    "elo" : 1000,
+    "valid" : true
+  },
+
+  {
+    "id" : 2,
+    "src" : "images/2.png",
+    "height" : 520,
+    "width" : 420,
+    "matches" : 0,
+    "votes" : 0,
+    "elo" : 1000,
+    "valid" : true
+  },
+
+  {
+    "id" : 3,
+    "src" : "images/2.png",
+    "height" : 520,
+    "width" : 420,
+    "matches" : 0,
+    "votes" : 0,
+    "elo" : 1000,
+    "valid" : true
+  },
+
+  {
+    "id" : 4,
+    "src" : "images/1.png",
+    "height" : 420,
+    "width" : 520,
+    "matches" : 0,
+    "votes" : 0,
+    "elo" : 1000,
+    "valid" : true
+  }
+  ]
+}

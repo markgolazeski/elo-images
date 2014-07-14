@@ -1,0 +1,15 @@
+!!!
+%html
+  = haml :imports
+  %head
+    %title All photos
+  %body
+    %h1 Photo Index
+    %p
+      Photo Index
+    %hr
+    - @photos.each do |photo|
+      ="#{photo.id}"
+      %br
+      %img{:src => "#{photo.src}", :height => "#{photo.height}", :width => "#{photo.width}" }
+      %br

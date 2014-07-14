@@ -1,0 +1,43 @@
+!!!
+%html
+  %head
+    = haml :imports
+    %title
+      Choose Your Favorite Photo
+  %body
+    .instructions
+      %h1
+        Choose Your Favorite Photo
+    %hr{:width => '75%'}
+    .flash
+      - if "#{@notice}" == ""
+        .hidden
+      - else
+        %span.hide
+          ="#{@notice}"
+    %form{:method => 'POST'}
+      .photo_heading
+        %h2#photo_info_1
+          Photo 1 Rating:
+          =@match.photo_1.elo
+          Photo 1 Matches:
+          =@match.photo_1.matches
+          Photo 1 Votes:
+          =@match.photo_1.votes
+        %h2#photo_info_2
+          Photo 2 Rating:
+          =@match.photo_2.elo
+          Photo 2 Matches:
+          =@match.photo_2.matches
+          Photo 2 Votes:
+          =@match.photo_2.votes
+      .clear
+        %input{:name => 'guid', :id => 'guid', :type => 'hidden', :value => "#{@match.guid}"}
+        %input{:name => 'match_id', :id => 'match_id', :type => 'hidden', :value => "#{@match.id}"}
+      .img_input
+        %input{:class => 'img_input', :name => 'photo_id_vote', :id => 'btn_1', :type => 'image', :src => "#{@match.photo_1.src}", :height => "#{@match.photo_1.height}", :width => "#{@match.photo_1.width}", :value => "#{@match.photo_1.id}"}
+        %input{:class => 'img_input', :name => 'photo_id_vote', :id => 'btn_2', :type => 'image', :src => "#{@match.photo_2.src}", :height => "#{@match.photo_2.height}", :width => "#{@match.photo_2.width}", :value => "#{@match.photo_2.id}"}
+        .clear
+      .links
+        %a{:href => '/top'}
+          Click to view top rated photos

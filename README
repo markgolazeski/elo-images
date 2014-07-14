@@ -1,0 +1,5 @@
+Metadata about pictures stored in JSON.
+
+Loaded every time, but then values overwritted if they are contained in redis.
+
+Redis store holds info on matches/votes/elos, and maintains sorted set of photos scored by elo.
