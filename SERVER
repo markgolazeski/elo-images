@@ -1,0 +1,24 @@
+apt-get update
+apt-get upgrade
+
+apt-get install vim htop screen git
+
+
+# Prep for ruby w/ deps for mail server
+cd
+git clone git://github.com/sstephenson/rbenv.git .rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+exec $SHELL
+
+mkdir -p ~/.rbenv/plugins
+cd ~/.rbenv/plugins
+git clone git://github.com/sstephenson/ruby-build.git
+echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+exec $SHELL
+
+apt-get -y install zlib1g-dev build-essential libssl-dev libreadline-dev
+
+rbenv install 2.1.2
+
+gem install bundler
