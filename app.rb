@@ -67,9 +67,6 @@ class App < Sinatra::Application
 
   get '/vote' do
     @notice = flash[:notice]
-    puts "@notice"
-    puts @notice
-    puts "_@notice"
 
     photo_1 = nil
     photo_2 = nil
