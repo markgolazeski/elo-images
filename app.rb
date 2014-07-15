@@ -157,7 +157,7 @@ class App < Sinatra::Application
   end
 
   get '/top' do
-    top_ids = $r.zrevrange('top', 0, 5)
+    top_ids = $r.zrevrange('top', 0, 4)
     @top_ids = top_ids
 
     @top_photos = top_ids.collect { |x| @photos_lookup[x.to_i] }
