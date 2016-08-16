@@ -19,3 +19,5 @@ gem 'redis-namespace'
 gem 'rack-flash3'
 
 gem 'envyable'
+
+gem 'fastimage'
