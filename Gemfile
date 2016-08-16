@@ -14,4 +14,8 @@ gem 'shotgun'
 
 gem 'redis'
 
+gem 'redis-namespace'
+
 gem 'rack-flash3'
+
+gem 'envyable'

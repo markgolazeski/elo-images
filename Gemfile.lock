@@ -6,6 +6,7 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.2.19)
+    envyable (1.0.0)
     fssm (0.2.10)
     haml (4.0.5)
       tilt
@@ -17,6 +18,8 @@ GEM
       rack
     raindrops (0.13.0)
     redis (3.1.0)
+    redis-namespace (1.5.2)
+      redis (~> 3.0, >= 3.0.4)
     sass (3.2.19)
     shotgun (0.9)
       rack (>= 1.0)
@@ -35,10 +38,15 @@ PLATFORMS
 
 DEPENDENCIES
   compass
+  envyable
   haml
   rack-flash3
   redis
+  redis-namespace
   sass
   shotgun
   sinatra
   unicorn
+
+BUNDLED WITH
+   1.12.5
