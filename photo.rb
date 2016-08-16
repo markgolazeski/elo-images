@@ -7,12 +7,21 @@ class Photo
       instance_variable_set("@#{k}", v) unless v.nil?
     end
 
-    if $r.nil?
-      $r = Redis.new
+    redis_connection = Redis.new
+    redis_namespace = ENV['REDIS_NAMESPACE']
+
+    if redis_namespace.nil?
+      abort 'No REDIS_NAMESPACE environment variable'
     end
 
+    $r = Redis::Namespace.new(redis_namespace, :redis => redis_connection)
+
+    #if $r.nil?
+    #  $r = Redis.new
+    #end
+
     if $r.nil?
-      abort("No redis?")
+      abort("No redis in photo.rb?")
     end
 
     ['elo', 'matches', 'votes'].each do |k|

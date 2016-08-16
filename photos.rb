@@ -7,13 +7,15 @@ require './photo'
 class Photos
 
 
-  FILE_LOCATION = "data/photos.json"
-
   attr_reader :data
 
   def initialize
 
-    file_path = File.join(File.dirname(__FILE__), FILE_LOCATION)
+    file_location = ENV['DATA_FILE_LOCATION']
+    if file_location.nil?
+      abort('No file_location from DATA_FILE_LOCATION specified')
+    end
+    file_path = File.join(File.dirname(__FILE__), file_location)
 
     unless File.exists? file_path
       abort "JSON #{file_path} not found!"

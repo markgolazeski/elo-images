@@ -5,6 +5,7 @@ require 'sinatra'
 require 'base64'
 require 'haml'
 require 'redis'
+require 'redis-namespace'
 require 'rack-flash'
 
 require './match'
@@ -15,7 +16,6 @@ set :static, true
 use Sass::Plugin::Rack
 Sass::Plugin.options.merge!(template_location: 'sass',
                             css_location: './public/css')
-
 
 class App < Sinatra::Application
   # For Rack Flash, Only
@@ -32,7 +32,15 @@ class App < Sinatra::Application
       @photos_lookup[p.id] = p
     end
 
-    $r = Redis.new
+    redis_connection = Redis.new
+    redis_namespace = ENV['REDIS_NAMESPACE']
+
+    if redis_namespace.nil?
+      abort 'No REDIS_NAMESPACE environment variable'
+    end
+
+    $r = Redis::Namespace.new(redis_namespace, :redis => redis_connection)
+
     if $r.nil?
       abort 'No redis?'
     end
