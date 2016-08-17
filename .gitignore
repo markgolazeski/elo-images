@@ -1,5 +1,5 @@
 **/*.swp
-public/images/*.png
+public/images/**/*.png
 .sass-cache
 **/.DS_Store
 public/css/*
