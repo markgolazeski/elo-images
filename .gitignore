@@ -4,3 +4,4 @@ public/images/**/*.png
 **/.DS_Store
 public/css/*
 config/env.yml
+data/**
