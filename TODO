@@ -1,5 +1,5 @@
 - nginx config
 - index haml
-- script to pull down/resize new images/add to data file
+- script to add images to data file
 - script to dump redis state into json as backup
 - script to clean up old completed match results that are no longer useful to have in redis
