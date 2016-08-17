@@ -2,4 +2,4 @@
 - index haml
 - script to pull down/resize new images/add to data file
 - script to dump redis state into json as backup
-- script to clean up old match results that are no longer useful to hold onto
+- script to clean up old completed match results that are no longer useful to have in redis
