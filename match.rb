@@ -1,13 +1,14 @@
 require 'redis'
 require 'redis-namespace'
 require 'securerandom'
+require 'time'
 
 require './photo'
 
 class Match
 
   attr_accessor :id, :ip, :photo_1_id, :photo_2_id, :photo_1,
-    :photo_2, :guid, :winning_photo_id
+    :photo_2, :guid, :winning_photo_id, :created_at
 
   def initialize(args = nil)
     redis_connection = Redis.new
@@ -21,6 +22,7 @@ class Match
       $r = Redis::Namespace.new(redis_namespace, :redis => redis_connection)
       @id = $r.incr self.match_counter_key
       @guid = SecureRandom.uuid
+      @created_at = Time.now.iso8601
     else
       $r = Redis::Namespace.new(redis_namespace, :redis => redis_connection)
       @id = args[:existing_id]
@@ -42,7 +44,7 @@ class Match
   end
 
   def match_key
-    "#{match_key_prefix}:#{@id}"
+    "#{match_key_prefix}#{@id}"
   end
 
   def match_key_prefix
@@ -78,7 +80,7 @@ class Match
   # Doesn't include winning_photo_id
   def save
     unless @photo_1_id.nil? or @photo_2_id.nil?
-      $r.hmset(self.match_key, 'photo_1_id', @photo_1_id, 'photo_2_id', @photo_2_id, 'ip', @ip, 'guid', @guid)
+      $r.hmset(self.match_key, 'photo_1_id', @photo_1_id, 'photo_2_id', @photo_2_id, 'ip', @ip, 'guid', @guid, 'created_at', @created_at)
       $r.expire(self.match_key, 86400)
     end
   end
