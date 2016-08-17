@@ -1,3 +1,5 @@
 - nginx config
 - index haml
-- script to pull down/resize new images
+- script to pull down/resize new images/add to data file
+- script to dump redis state into json as backup
+- script to clean up old match results that are no longer useful to hold onto
