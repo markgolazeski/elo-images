@@ -1,0 +1,5 @@
+example:
+  REDIS_NAMESPACE: 'example'
+  DATA_FILE_LOCATION: 'data/example/photos.json'
+  IMAGES_SUBDIRECTORY: '/example/'
+
