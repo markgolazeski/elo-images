@@ -1,4 +1,5 @@
 require 'redis'
+require 'redis-namespace'
 require 'securerandom'
 
 require './photo'
@@ -9,12 +10,19 @@ class Match
     :photo_2, :guid, :winning_photo_id
 
   def initialize(args = nil)
+    redis_connection = Redis.new
+    redis_namespace = ENV['REDIS_NAMESPACE']
+
+    if redis_namespace.nil?
+      abort 'No REDIS_NAMESPACE environment variable'
+    end
+
     if args.nil?
-      $r = Redis.new
+      $r = Redis::Namespace.new(redis_namespace, :redis => redis_connection)
       @id = $r.incr self.match_counter_key
       @guid = SecureRandom.uuid
     else
-      $r = Redis.new
+      $r = Redis::Namespace.new(redis_namespace, :redis => redis_connection)
       @id = args[:existing_id]
 
       existing_match = $r.hgetall(self.match_key)
