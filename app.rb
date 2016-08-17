@@ -61,7 +61,6 @@ class App < Sinatra::Application
       @photos.each do |p|
         total = total + p.matches
       end
-      puts total
       $r.set(Match.match_counter_key, total)
 
       if not $r.exists(Match.match_finished_key)
