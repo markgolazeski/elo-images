@@ -5,3 +5,4 @@ public/images/**/*.png
 public/css/*
 config/env.yml
 data/**
+scripts/gbe/**
