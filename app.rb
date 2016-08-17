@@ -45,6 +45,7 @@ class App < Sinatra::Application
       abort 'No redis?'
     end
 
+
     # Ensures current photos valid
     $r.del('top')
 
@@ -55,9 +56,22 @@ class App < Sinatra::Application
     end
 
     # Counters
-    if not $r.exists('match_count')
-      $r.set('match_count', 0)
+    if not $r.exists(Match.match_counter_key)
+      total = 0
+      @photos.each do |p|
+        total = total + p.matches
+      end
+      puts total
+      $r.set(Match.match_counter_key, total)
+
+      if not $r.exists(Match.match_finished_key)
+        (0..total).each do |i|
+          $r.sadd(Match.match_finished_key, "#{Match.match_key_prefix}#{i}")
+        end
+      end
     end
+
+    # num matches
 
   end
 

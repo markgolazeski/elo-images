@@ -31,10 +31,10 @@ class Photo
       unless stored.nil?
         instance_variable_set("@#{k}", stored)
       else
-        $r.set(key, 0)
+        $r.set(key, [0, instance_variable_get("@#{k}")].compact.max)
 
         if k == 'elo'
-          $r.set(key, 1000)
+          $r.set(key, [1000, instance_variable_get("@#{k}")].compact.max)
         end
       end
     end

@@ -34,11 +34,23 @@ class Match
   end
 
   def match_counter_key
+    self.class.match_counter_key
+  end
+
+  def self.match_counter_key
     'match_count'
   end
 
   def match_key
-    "match:#{@id}"
+    "#{match_key_prefix}:#{@id}"
+  end
+
+  def match_key_prefix
+    self.class.match_key_prefix
+  end
+
+  def self.match_key_prefix
+    "match:"
   end
 
   def winning_photo_id= winning_photo
