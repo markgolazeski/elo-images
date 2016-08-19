@@ -32,6 +32,8 @@ class App < Sinatra::Application
       @photos_lookup[p.id] = p
     end
 
+    @google_analytics_identifier = ENV['GOOGLE_AUTH_IDENTIFIER']
+
     redis_connection = Redis.new
     redis_namespace = ENV['REDIS_NAMESPACE']
 
