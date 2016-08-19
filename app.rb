@@ -157,8 +157,10 @@ class App < Sinatra::Application
 
     if win_id.to_i == photo_1.id
       photo_1_elo, photo_2_elo = update_elos(photo_1, photo_2)
+      photo_1.increment_votes
     elsif win_id.to_i == photo_2.id
       photo_2_elo, photo_1_elo = update_elos(photo_2, photo_1)
+      photo_2.increment_votes
     else
       status 400
       puts "win_id, photo_1.id, photo_2.id"

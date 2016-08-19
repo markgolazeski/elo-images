@@ -82,7 +82,7 @@ class Photo
     "photo:#{self.id}:matches"
   end
 
-  def increment_vote
+  def increment_votes
     $r.incr(vote_key)
   end
 
