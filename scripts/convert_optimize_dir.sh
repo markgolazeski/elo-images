@@ -8,11 +8,7 @@ if [ -z "$indir" ]; then
   exit
 fi
 
-#files=
-#  echo $files
-#exit
-
-for file in `find $1 -iname \*.png -and -not -iname \*\.q\.png`
+for file in `find $1 -depth 1 -iname \*.png -and -not -iname \*\.q\.png`
 do
   echo "Starting from $file"
   background_file="${file%.*}.resized.png"
