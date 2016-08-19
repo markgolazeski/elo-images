@@ -44,7 +44,7 @@ r.keys('photo:*:*').each do |k|
   end
 
   data_key = k.split(":")[2]
-  data_value = r.get(k)
+  data_value = r.get(k).to_i
 
   photo_data[photo_id][data_key] = data_value
 end
