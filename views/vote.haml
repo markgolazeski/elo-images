@@ -35,8 +35,10 @@
         %input{:name => 'guid', :id => 'guid', :type => 'hidden', :value => "#{@match.guid}"}
         %input{:name => 'match_id', :id => 'match_id', :type => 'hidden', :value => "#{@match.id}"}
       .img_input
-        %input{:class => 'img_input', :name => 'photo_id_vote', :id => 'btn_1', :type => 'image', :src => "#{@match.photo_1.src}", :height => "#{@match.photo_1.height}", :width => "#{@match.photo_1.width}", :value => "#{@match.photo_1.id}"}
-        %input{:class => 'img_input', :name => 'photo_id_vote', :id => 'btn_2', :type => 'image', :src => "#{@match.photo_2.src}", :height => "#{@match.photo_2.height}", :width => "#{@match.photo_2.width}", :value => "#{@match.photo_2.id}"}
+        %button{:type => 'submit', :name => 'photo_id_vote', :id => 'btn_1', :value => "#{@match.photo_1.id}"}
+          %img{:src => "#{@match.photo_1.src}", :height => "#{@match.photo_1.height}", :width => "#{@match.photo_1.width}"}
+        %button{:type => 'submit', :name => 'photo_id_vote', :id => 'btn_2', :value => "#{@match.photo_2.id}"}
+          %img{:src => "#{@match.photo_2.src}", :height => "#{@match.photo_2.height}", :width => "#{@match.photo_2.width}"}
         .clear
       .links
         %a{:href => '/top'}
